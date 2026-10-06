@@ -1,10 +1,12 @@
-/* Nova Lumora niche site engine v1 - one config per trade: palette, fonts, layout, signature module, copy. */
+/* Nova Lumora niche site engine v1.1 - one config per trade: palette, fonts, layout, signature module, copy. Includes the visit-tracking pixel. */
 (function(){
 var D=window.NOVA||{},K=D.k||'handyman';
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var tel=String(D.p||'').replace(/\D/g,'');if(tel.length==10)tel='1'+tel;
 var pretty=D.pp||(function(){var d=tel.slice(-10);return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6)})();
 var city=D.c||'your area';
+var slug=((location.pathname.match(/nova-previews\/([^\/]+)\//)||location.pathname.match(/preview\/([^\/]+)\//)||[])[1])||D.slug||'';
+var PX='https://preview-generator-production-0846.up.railway.app/track/'+encodeURIComponent(slug)+'.gif';
 var M={
 cleaning:'<svg viewBox="0 0 200 200"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M100 30v40M80 50h40"/><path d="M52 112v26M39 125h26"/><path d="M150 100v22M139 111h22"/></g><circle cx="70" cy="70" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="140" cy="150" r="20" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="96" cy="152" r="9" fill="currentColor" opacity=".5"/></svg>',
 painting:'<svg viewBox="0 0 200 200"><rect x="40" y="40" width="110" height="46" rx="8" fill="currentColor"/><path d="M150 63h22v50h-60v22" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round"/><rect x="100" y="135" width="24" height="44" rx="6" fill="currentColor" opacity=".6"/></svg>',
@@ -111,7 +113,7 @@ var css=':root{--bg:'+C.bg+';--ink:'+C.ink+';--mut:'+C.mut+';--ac:'+C.ac+';--ac2
 'footer{padding:28px 0;color:var(--mut);font-size:14px;border-top:1px solid var(--ln)}.callbar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--ac);color:var(--on);text-align:center;font-weight:700;padding:16px;text-decoration:none;display:none}'+
 '.bold h1{text-transform:uppercase;letter-spacing:.01em}.bold .hero{background:var(--ac2);color:#fff}.bold .hero p,.bold .tr{color:#fff9}.bold .hero .eyebrow{color:var(--ac)}.bold .hero .btn.ghost{color:#fff;border-color:#fff6}.bold.junk .hero{background:var(--ac);color:var(--ink)}.bold.junk .hero p,.bold.junk .tr{color:#17171Aaa}.bold.junk .art{background:var(--ink);color:var(--ac)}.bold.junk .hero .eyebrow,.bold.junk .tr span:before{color:var(--ink)}.bold.junk .hero .btn{background:var(--ink);color:#fff}.bold.junk .hero .btn.ghost{background:none;color:var(--ink);border-color:#0004}.painting .hero .btn.ghost,.concrete .hero .btn.ghost{color:var(--ink);border-color:#0003}.concrete .hero .eyebrow{color:var(--ac)}'+
 '.dark .hero{background:linear-gradient(135deg,var(--hero),var(--bg))}.dark .art{background:radial-gradient(circle at 30% 20%,var(--ac) 0,#0000 70%),var(--sf);color:var(--ac);border:1px solid var(--ln)}.dark .svcs{background:var(--bg)}.dark .svcs .grid4 .card{background:var(--sf)}.dark .pro{background:var(--sf)}.dark .stp .card{background:var(--bg)}.dark h1{letter-spacing:.01em}'+
-'.layout-soft .hero .art,.layout-soft .hero .art{border-radius:50% 50% 50% 8%}.layout-soft .hero .in{grid-template-columns:.9fr 1.1fr}.layout-soft .hero .art{order:2;aspect-ratio:1/1.05}.split .art{border-radius:999px 999px 28px 28px}'+
+'.layout-soft .hero .art{border-radius:50% 50% 50% 8%}.layout-soft .hero .in{grid-template-columns:.9fr 1.1fr}.layout-soft .hero .art{order:2;aspect-ratio:1/1.05}.split .art{border-radius:999px 999px 28px 28px}'+
 '.concrete .hero{background:linear-gradient(180deg,#D8DCDF,#EEF0F1);color:var(--ink)}.concrete .hero h1{color:var(--ac2)}.concrete .hero p,.concrete .tr{color:var(--mut)}.concrete .art{background:var(--ac2)}.painting .hero{background:#F1E9DC;padding-bottom:84px;color:var(--ink)}.painting .hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:20px;background:linear-gradient(90deg,#E9DCC8 0 16.6%,#2F5D8C 16.6% 33.3%,#8AA38C 33.3% 50%,#F4F1EA 50% 66.6%,#9A5B3C 66.6% 83.3%,#C23A2B 83.3%)}.painting .hero p,.painting .tr{color:var(--mut)}'+
 '@media(max-width:820px){.hero .in,.layout-soft .hero .in,.info{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr}.art{max-width:300px}.callbar{display:block}.menu{grid-template-columns:1fr}.hero{padding:36px 0 44px}header .btn{padding:10px 16px;font-size:14px}.sec,.svcs,.why,.pro,.rv,.info,.quote{padding-block:40px}.alert .btn{margin-left:0}}@media(max-width:480px){.grid4{grid-template-columns:1fr}}';
 var fonts='https://fonts.googleapis.com/css2?'+C.f.map(function(x){return 'family='+x}).join('&')+'&display=swap';
@@ -129,11 +131,7 @@ sig()+
 '<section class="rv"><div class="in"><h2 style="margin-bottom:20px;font-size:clamp(28px,4vw,40px)">What customers say</h2><div class="grid3">'+rvh+'</div></div></section>'+
 '<section><div class="in info"><div><h2 style="font-size:30px;margin-bottom:12px">Hours</h2>'+hrs+'</div><div><h2 style="font-size:30px;margin-bottom:12px">Where we work</h2><p>Serving <b>'+esc(city)+'</b> and surrounding areas.'+(D.a?'<br>'+esc(D.a):'')+'</p><p><a class="btn" href="tel:+'+tel+'">'+esc(pretty)+'</a></p></div></div></section>'+
 '<section class="quote" id="quote"><div class="in"><h2>'+esc(C.cta)+'</h2><p>Tell us what you need and we will get back to you.</p><form onsubmit="event.preventDefault();this.querySelector(\'button\').textContent=\'Preview only: the form turns on at launch\'"><input placeholder="Your name"><input placeholder="Phone or email"><textarea placeholder="Tell us about the job"></textarea><button class="btn">Send request</button></form></div></section>'+
-'<footer><div class="in">© '+esc(D.n)+' · '+esc(city)+' · <a href="tel:+'+tel+'">'+esc(pretty)+'</a></div></footer><a class="callbar" href="tel:+'+tel+'">Tap to call '+esc(pretty)+'</a>';
+'<footer><div class="in">© '+esc(D.n)+' · '+esc(city)+' · <a href="tel:+'+tel+'">'+esc(pretty)+'</a></div></footer><a class="callbar" href="tel:+'+tel+'">Tap to call '+esc(pretty)+'</a><img src="'+PX+'" width="1" height="1" alt="" style="position:absolute;left:-9999px;width:1px;height:1px">';
 document.open();document.write('<!doctype html><html lang="en"><head>'+head+'</head><body class="'+C.lay+' '+K+(C.dark?' dark':'')+(C.lay=='soft'?' layout-soft':'')+'">'+body+'</body></html>');document.close();
 var rg=document.getElementById('rg'),b2=document.getElementById('b2');if(rg&&b2)rg.oninput=function(){b2.style.width=rg.value+'%'};
 })();
-
-/* Nova visit tracking (restored by Echo): one pixel per page view; the server counts 1/IP/slug/hour, 3+ = Hot. */
-(function(){try{var s=location.pathname.split('/').filter(Boolean);var slug=s[s.length-1]==='index.html'?s[s.length-2]:s[s.length-1];
-if(!slug||slug==='_t')return;var i=new Image(1,1);i.src='https://preview-generator-production-0846.up.railway.app/track/'+encodeURIComponent(slug)+'.gif?r='+Date.now();}catch(e){}})();
