@@ -6,7 +6,8 @@ var tel=String(D.p||'').replace(/\D/g,'');if(tel.length==10)tel='1'+tel;
 var pretty=D.pp||(function(){var d=tel.slice(-10);return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6)})();
 var city=D.c||'your area';
 var slug=((location.pathname.match(/nova-previews\/([^\/]+)\//)||location.pathname.match(/preview\/([^\/]+)\//)||[])[1])||D.slug||'';
-var PX='https://preview-generator-production-0846.up.railway.app/track/'+encodeURIComponent(slug)+'.gif';
+var NOVA_OWNER=false;try{if(/[?&]owner=1/.test(location.search))localStorage.setItem('nova_owner','1');NOVA_OWNER=/[?&]nt=1/.test(location.search)||localStorage.getItem('nova_owner')==='1';}catch(e){}
+var PX=NOVA_OWNER?'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==':'https://preview-generator-production-0846.up.railway.app/track/'+encodeURIComponent(slug)+'.gif';
 var M={
 cleaning:'<svg viewBox="0 0 200 200"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M100 30v40M80 50h40"/><path d="M52 112v26M39 125h26"/><path d="M150 100v22M139 111h22"/></g><circle cx="70" cy="70" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="140" cy="150" r="20" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="96" cy="152" r="9" fill="currentColor" opacity=".5"/></svg>',
 painting:'<svg viewBox="0 0 200 200"><rect x="40" y="40" width="110" height="46" rx="8" fill="currentColor"/><path d="M150 63h22v50h-60v22" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round"/><rect x="100" y="135" width="24" height="44" rx="6" fill="currentColor" opacity=".6"/></svg>',
