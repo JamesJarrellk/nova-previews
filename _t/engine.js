@@ -132,6 +132,44 @@ sig()+
 '<section><div class="in info"><div><h2 style="font-size:30px;margin-bottom:12px">Hours</h2>'+hrs+'</div><div><h2 style="font-size:30px;margin-bottom:12px">Where we work</h2><p>Serving <b>'+esc(city)+'</b> and surrounding areas.'+(D.a?'<br>'+esc(D.a):'')+'</p><p><a class="btn" href="tel:+'+tel+'">'+esc(pretty)+'</a></p></div></div></section>'+
 '<section class="quote" id="quote"><div class="in"><h2>'+esc(C.cta)+'</h2><p>Tell us what you need and we will get back to you.</p><form onsubmit="event.preventDefault();this.querySelector(\'button\').textContent=\'Preview only: the form turns on at launch\'"><input placeholder="Your name"><input placeholder="Phone or email"><textarea placeholder="Tell us about the job"></textarea><button class="btn">Send request</button></form></div></section>'+
 '<footer><div class="in">© '+esc(D.n)+' · '+esc(city)+' · <a href="tel:+'+tel+'">'+esc(pretty)+'</a></div></footer><a class="callbar" href="tel:+'+tel+'">Tap to call '+esc(pretty)+'</a><img src="'+PX+'" width="1" height="1" alt="" style="position:absolute;left:-9999px;width:1px;height:1px">';
+
+/* Echo photo pack v1: real trade photography (Unsplash, free licence) in the hero, project tiles, slider and a work gallery.
+   Each image is preloaded; if one fails, the original illustration stays. Labeled as sample photos until the owner sends theirs. */
+var NOVA_PHOTOS={
+ detail:['photo-1601362840469-51e4d8d58785','photo-1520340356584-f9917d1eea6f','photo-1489824904134-891ab64532f1','photo-1605559424843-9e4c228bf1c2','photo-1558618666-fcd25c85cd64','photo-1503376780353-7e6692767b70'],
+ mechanic:['photo-1486006920555-c77dcf18193c','photo-1503376780353-7e6692767b70','photo-1489824904134-891ab64532f1','photo-1520340356584-f9917d1eea6f'],
+ wash:['photo-1600585154340-be6161a56a0c','photo-1625602812206-5ec545ca1231','photo-1570129477492-45c003edd2be','photo-1600607687939-ce8a6c25118c','photo-1560518883-ce09059eeffa'],
+ concrete:['photo-1625602812206-5ec545ca1231','photo-1600585154340-be6161a56a0c','photo-1600607687939-ce8a6c25118c','photo-1560518883-ce09059eeffa'],
+ lawn:['photo-1558904541-efa843a96f01','photo-1416879595882-3373a0480b5b','photo-1592150621744-aca64f48394a','photo-1508193638397-1c4234db14d8','photo-1585320806297-9794b3e4eeae'],
+ handyman:['photo-1581578731548-c64695cc6952','photo-1504148455328-c376907d081c','photo-1600566752355-35792bedcfea','photo-1562259949-e8e7689d7828'],
+ painting:['photo-1562259949-e8e7689d7828','photo-1600566752355-35792bedcfea','photo-1581578731548-c64695cc6952'],
+ cleaning:['photo-1600566752355-35792bedcfea','photo-1570129477492-45c003edd2be','photo-1560518883-ce09059eeffa'],
+ tree:['photo-1592150621744-aca64f48394a','photo-1508193638397-1c4234db14d8','photo-1558904541-efa843a96f01'],
+ junk:['photo-1486406146926-c627a92ad1ab','photo-1581578731548-c64695cc6952'],
+ grooming:[]
+};
+function novaPhotos(k){
+ var ids=NOVA_PHOTOS[k]||[]; if(!ids.length) return;
+ var U=function(i,w){return 'https://images.unsplash.com/'+i+'?auto=format&fit=crop&w='+(w||1200)+'&q=70'};
+ function load(url,cb){var im=new Image();im.onload=function(){cb(url)};im.src=url;}
+ var st=document.createElement('style');
+ st.textContent='.art.np{background-size:cover!important;background-position:center!important}.art.np svg{display:none}.art.np:after{content:"Sample photo · your work goes here"!important;background:#0008;color:#fff;padding:6px 10px;border-radius:8px;left:12px!important;right:auto!important;bottom:12px!important;opacity:1!important}'+
+  '.proj.np{background-size:cover!important;background-position:center!important;text-shadow:0 2px 10px #000a}.proj.np:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 40%,#000a);border-radius:inherit}.proj.np{position:relative}.proj.np>*{position:relative}'+
+  '.ngal{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:18px}.ngal div{aspect-ratio:4/3;border-radius:14px;background-size:cover;background-position:center;position:relative}'+
+  '.ngal div:after{content:"Sample";position:absolute;left:8px;bottom:8px;font:600 10px Inter,sans-serif;background:#0008;color:#fff;padding:3px 7px;border-radius:6px;letter-spacing:.05em;text-transform:uppercase}';
+ document.head.appendChild(st);
+ var a=document.querySelector('.art'); if(a) load(U(ids[0],1400),function(u){a.style.backgroundImage='url('+u+')';a.classList.add('np')});
+ document.querySelectorAll('.proj').forEach(function(p,i){load(U(ids[(i+1)%ids.length],900),function(u){p.style.backgroundImage='url('+u+')';p.classList.add('np')})});
+ var b1=document.querySelector('.ba .b1'),b2=document.querySelector('.ba .b2');
+ if(b1&&b2) load(U(ids[0],1400),function(u){b1.style.background='url('+u+') center/cover';b1.style.filter='saturate(.25) brightness(.55) sepia(.45)';b2.style.backgroundImage='url('+u+')';b2.style.backgroundSize='cover';b2.style.backgroundPosition='center'});
+ var foot=document.querySelector('footer'); if(foot && ids.length>2){
+  var sec=document.createElement('section');sec.className='sec';sec.innerHTML='<div class="in"><h2>Recent work</h2><p class="lead">Sample photos. Your own job photos go here once you send them.</p><div class="ngal"></div></div>';
+  foot.parentNode.insertBefore(sec,foot); var g=sec.querySelector('.ngal');
+  ids.slice(1,4).forEach(function(i){load(U(i,800),function(u){var d=document.createElement('div');d.style.backgroundImage='url('+u+')';g.appendChild(d)})});
+ }
+}
+
+body+='<script>var NOVA_PHOTOS='+JSON.stringify(NOVA_PHOTOS)+';('+novaPhotos.toString()+')('+JSON.stringify(D.k||'')+')<\/script>';
 document.open();document.write('<!doctype html><html lang="en"><head>'+head+'</head><body class="'+C.lay+' '+K+(C.dark?' dark':'')+(C.lay=='soft'?' layout-soft':'')+'">'+body+'</body></html>');document.close();
 var rg=document.getElementById('rg'),b2=document.getElementById('b2');if(rg&&b2)rg.oninput=function(){b2.style.width=rg.value+'%'};
 })();
