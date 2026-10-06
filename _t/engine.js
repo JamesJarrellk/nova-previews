@@ -133,3 +133,7 @@ sig()+
 document.open();document.write('<!doctype html><html lang="en"><head>'+head+'</head><body class="'+C.lay+' '+K+(C.dark?' dark':'')+(C.lay=='soft'?' layout-soft':'')+'">'+body+'</body></html>');document.close();
 var rg=document.getElementById('rg'),b2=document.getElementById('b2');if(rg&&b2)rg.oninput=function(){b2.style.width=rg.value+'%'};
 })();
+
+/* Nova visit tracking (restored by Echo): one pixel per page view; the server counts 1/IP/slug/hour, 3+ = Hot. */
+(function(){try{var s=location.pathname.split('/').filter(Boolean);var slug=s[s.length-1]==='index.html'?s[s.length-2]:s[s.length-1];
+if(!slug||slug==='_t')return;var i=new Image(1,1);i.src='https://preview-generator-production-0846.up.railway.app/track/'+encodeURIComponent(slug)+'.gif?r='+Date.now();}catch(e){}})();
