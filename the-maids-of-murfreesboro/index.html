@@ -67,7 +67,7 @@ header{position:fixed;top:calc(env(safe-area-inset-top,0px) + 38px);left:0;right
 .ba .tag{position:absolute;bottom:12px;padding:6px 10px;border-radius:999px;font-size:.78rem;font-weight:700;background:rgba(0,0,0,.45);color:#fff}.ba .tag.l{left:12px}.ba .tag.r{right:12px}
 .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 /* plans */
-.plans{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}.plan{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column}.plan.hi{border-color:var(--moss);box-shadow:0 20px 50px -30px rgba(62,92,74,.5)}.plan .tag{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}.plan ul{list-style:none;margin:14px 0 20px;padding:0;color:var(--ink2);font-size:.95rem;flex:1}.plan li{padding:5px 0 5px 22px;position:relative}.plan li::before{content:"✓";position:absolute;left:0;color:var(--moss);font-weight:800}
+.plans{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.plan{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column}.plan.hi{border-color:var(--moss);box-shadow:0 20px 50px -30px rgba(62,92,74,.5)}.plan .tag{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}.plan ul{list-style:none;margin:14px 0 20px;padding:0;color:var(--ink2);font-size:.95rem;flex:1}.plan li{padding:5px 0 5px 22px;position:relative}.plan li::before{content:"✓";position:absolute;left:0;color:var(--moss);font-weight:800}
 /* areas */
 .zip{display:flex;gap:8px;max-width:420px;margin:22px 0 10px}.zip input{flex:1;font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:999px;background:var(--white);font-size:1rem}.zip .btn{padding:14px 22px}
 #zr{min-height:28px;font-weight:600;margin-bottom:22px}
@@ -94,11 +94,11 @@ footer{padding:50px 0 120px;font-size:.92rem;color:var(--ink2)}footer .wrap{disp
 <h1>Come home<br>to <em>done.</em></h1>
 <p class="lead">A locally owned team of The Maids, not a stranger with a mop. Pick your rooms, get your price by text, and walk into a house that smells like someone cared.</p>
 <div class="cta"><a class="btn p" href="#estimate">Get my price</a><a class="btn o" href="tel:+16155986045">Call (615) 598-6045</a></div>
-<div class="proof"><span>Insured &amp; bonded</span><span>Background-checked team</span><span>Supplies included</span><span>24-hour re-clean promise</span></div>
+<div class="proof"><span>Insured &amp; bonded</span><span>Background-checked team</span><span>Supplies included</span><span>24-hour satisfaction guarantee</span></div>
 </div>
 <div class="est" id="estimate">
 <h3>Pick the rooms. Get the price.</h3>
-<p class="sub">No home visit, no 1-800 number. We text your price back the same day.</p>
+<p class="sub">No home visit needed. We text your price back the same business day.</p>
 <div class="row"><label>Bedrooms</label><span class="stp"><button type="button" onclick="st('bd',-1)">−</button><output id="bd">3</output><button type="button" onclick="st('bd',1)">+</button></span></div>
 <div class="row"><label>Bathrooms</label><span class="stp"><button type="button" onclick="st('ba',-1)">−</button><output id="ba">2</output><button type="button" onclick="st('ba',1)">+</button></span></div>
 <div class="row" style="display:block"><label>How often</label><div class="seg" id="fq"><button type="button" class="on">Every 2 weeks</button><button type="button">Weekly</button><button type="button">Monthly</button><button type="button">One time</button><button type="button">Move in / out</button></div></div>
@@ -111,8 +111,8 @@ footer{padding:50px 0 120px;font-size:.92rem;color:var(--ink2)}footer .wrap{disp
 <div class="trust"><div class="wrap">
 <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Insured, bonded, background-checked</b><span>Every team member. Every visit.</span></div></div>
 <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.5-6 6-6s6 2.5 6 6M15 20c0-2.5 1.5-4.5 4-4.5s3 1.5 3 3.5"/></svg><div><b>A team, not one person</b><span>Several hands at once. In and out before lunch.</span></div></div>
-<div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg><div><b>22-Step Healthy Touch® process</b><span>The same checklist in every room, every time.</span></div></div>
-<div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/><path d="M21 3v6h-6"/></svg><div><b>24-hour re-clean promise</b><span>Missed a spot? Say so. We come back free.</span></div></div>
+<div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg><div><b>The Maids 22-Step Cleaning Process</b><span>The same checklist in every room, every time.</span></div></div>
+<div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/><path d="M21 3v6h-6"/></svg><div><b>24-hour satisfaction guarantee</b><span>Missed a spot? Tell us within 24 hours. We re-clean it free.</span></div></div>
 </div></div>
 
 <section id="services"><div class="wrap">
@@ -151,11 +151,12 @@ footer{padding:50px 0 120px;font-size:.92rem;color:var(--ink2)}footer .wrap{disp
 
 <section id="plans"><div class="wrap">
 <span class="eyebrow">Plans</span><h2>Choose how deep. We'll price the rest.</h2>
-<p class="lead" style="margin:14px 0 30px">Three ways to clean a home, all on the same process. Every plan is priced for your house, and recurring visits always cost less per visit than one-offs.</p>
+<p class="lead" style="margin:14px 0 30px">Four plans, one process. Every plan is priced for your home, and recurring visits cost less per visit than one-offs.</p>
 <div class="plans">
-<div class="plan rv"><div class="tag">Core</div><h3>The rooms that show</h3><ul><li>Kitchen, top to bottom</li><li>Every bathroom</li><li>Floors vacuumed and mopped</li><li>Trash out, surfaces wiped</li></ul><a class="btn o" href="#estimate">Get my price</a></div>
-<div class="plan hi rv"><div class="tag">Essential · most booked</div><h3>The whole house, every time</h3><ul><li>Everything in Core</li><li>Bedrooms and living areas</li><li>Dusting, mirrors, glass</li><li>Beds made, linens changed on request</li></ul><a class="btn p" href="#estimate">Get my price</a></div>
-<div class="plan rv"><div class="tag">Ultimate</div><h3>Deep, then maintained</h3><ul><li>Everything in Essential</li><li>Baseboards, blinds, fans</li><li>Inside oven and fridge on the first visit</li><li>Detail work on every visit after</li></ul><a class="btn o" href="#estimate">Get my price</a></div>
+<div class="plan rv"><div class="tag">Core</div><h3>3 rooms, your pick</h3><ul><li>Choose the three that matter most</li><li>Most pick kitchen + primary bath + one more</li><li>Full 22-step process in each</li><li>Floors vacuumed and mopped</li></ul><a class="btn o" href="#estimate">Get my price</a></div>
+<div class="plan hi rv"><div class="tag">Essential · most booked</div><h3>5 rooms, every visit</h3><ul><li>Five rooms of your choice</li><li>Kitchen and baths plus living spaces</li><li>Full 22-step process in each</li><li>Floors vacuumed and mopped</li></ul><a class="btn p" href="#estimate">Get my price</a></div>
+<div class="plan rv"><div class="tag">Ultimate</div><h3>Every room</h3><ul><li>The whole home, top to bottom</li><li>All bedrooms, baths, living areas</li><li>Hallways, entry, laundry, office</li><li>Entire-home floors vacuumed and mopped</li></ul><a class="btn o" href="#estimate">Get my price</a></div>
+<div class="plan rv"><div class="tag">Ultimate Plus</div><h3>Every room, plus the extras</h3><ul><li>Everything in Ultimate</li><li>Bonus detail services added</li><li>For first visits, deep resets, move-outs</li><li>Ask what's included for your home</li></ul><a class="btn o" href="#estimate">Get my price</a></div>
 </div>
 <p style="margin-top:16px;font-size:.85rem;color:var(--stone)">Need a move-out, a one-time reset, or a custom scope? Text the rooms and we'll build it.</p>
 </div></section>
@@ -193,10 +194,10 @@ footer{padding:50px 0 120px;font-size:.92rem;color:var(--ink2)}footer .wrap{disp
 <details><summary>Do you bring supplies?</summary><p>Yes, everything, including vacuums. If you prefer a specific product for a surface, leave it out and tell us.</p></details>
 <details><summary>Is it the same team every time?</summary><p>That's the goal, and it's the norm for recurring customers. If someone's out, the team lead knows your house.</p></details>
 <details><summary>How is the price set?</summary><p>By the size of the home, the plan, and how often we come. We text you the number before anything is booked. Recurring visits cost less per visit than a one-time clean.</p></details>
-<details><summary>What if something gets missed?</summary><p>Tell us within 24 hours and we come back and re-clean it at no charge. That's the brand promise and we keep it locally.</p></details>
+<details><summary>What if something gets missed?</summary><p>Tell us within 24 hours and we come back and re-clean that area at no additional cost. That's The Maids 24-hour satisfaction guarantee, and we keep it locally.</p></details>
 <details><summary>Can I reschedule?</summary><p>Yes. Text or call before the day prior and we'll move it. Same-day changes depend on the route.</p></details>
 <details><summary>Pets and kids?</summary><p>Fine with both. We use products chosen for homes with children and pets, and we'll work around a nervous dog.</p></details>
-<details><summary>Are you the real The Maids?</summary><p>Yes. We're the locally owned Murfreesboro franchise of The Maids, run from Thompson Lane. Same process and guarantee as the national brand, with a local team and a local phone number.</p></details>
+<details><summary>Are you the real The Maids?</summary><p>Yes. We're the independently owned and operated Murfreesboro franchise of The Maids, run from Thompson Lane. Same 22-step process and guarantee as the national brand, with a local team and a local phone number. You can also book through <a href="https://www.maids.com/">maids.com</a>.</p></details>
 </div></div></section>
 
 <section class="final" id="quote"><div class="wrap">
@@ -214,7 +215,7 @@ footer{padding:50px 0 120px;font-size:.92rem;color:var(--ink2)}footer .wrap{disp
 <div><b>Reach us</b><ul><li><a href="tel:+16155986045">(615) 598-6045</a></li><li><a href="sms:+16155986045">Text us</a></li><li>Mon–Fri, call for hours</li></ul></div>
 <div><b>Clean</b><ul><li><a href="#services">Services</a></li><li><a href="#plans">Plans</a></li><li><a href="#checklist">Checklist</a></li><li><a href="#areas">Service area</a></li></ul></div>
 <div><b>Follow</b><ul><li><a href="https://www.facebook.com/TheMaidsofMurfreesboro/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/themaidsofmurfreesboro/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.maids.com/" target="_blank" rel="noopener">The Maids national site</a></li></ul></div>
-<div class="fine">© <span id="yr"></span> The Maids of Murfreesboro. Independently owned and operated franchise of The Maids International. Healthy Touch® is a registered mark of The Maids International. Site by <a href="https://novalumorainc.com/">Nova Lumora</a>.</div>
+<div class="fine">© <span id="yr"></span> The Maids of Murfreesboro. Independently owned and operated franchise. The Maids and the 22-Step Cleaning Process are marks of The Maids International, used under license. Site by <a href="https://novalumorainc.com/">Nova Lumora</a>.</div>
 </div></footer>
 
 <div id="want" class="want" hidden><div class="wbox"><button class="x" onclick="nlClose()" aria-label="Close">&times;</button>
